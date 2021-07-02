@@ -38,7 +38,7 @@ RUN adduser \
     --gecos "" \
     --shell "/sbin/nologin" \
     --uid "${UID}" \
-    "${USER}" \
+    "${USER}"
 
 RUN mkdir -p /home/erigon && chown ${USER}:${USER} /home/erigon
 
