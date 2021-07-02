@@ -24,7 +24,6 @@ RUN git checkout ${BUILD_TARGET}
 
 RUN go mod download
 
-ADD . .
 RUN make all
 
 FROM alpine:3.14
