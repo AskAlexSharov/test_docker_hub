@@ -21,7 +21,8 @@ RUN apk --no-cache add make gcc g++ linux-headers git bash ca-certificates libgc
 
 WORKDIR /app
 
-RUN git clone --recurse-submodules -j8 https://github.com/ledgerwatch/erigon.git .
+RUN git clone https://github.com/ledgerwatch/erigon.git .
+RUN git submodule update --init libmdbx
 RUN git config advice.detachedHead false
 RUN git fetch --all --tags
 RUN git checkout ${BUILD_TARGET}
