@@ -18,8 +18,8 @@ RUN apk --no-cache add make gcc g++ linux-headers git bash ca-certificates libgc
 
 WORKDIR /app
 
-RUN git config advice.detachedHead false
 RUN git clone --recurse-submodules -j8 https://github.com/ledgerwatch/erigon.git .
+RUN git config advice.detachedHead false
 RUN git fetch --all --tags
 RUN git checkout ${BUILD_TARGET}
 
@@ -44,7 +44,6 @@ RUN mkdir -p /home/erigon && chown ${USER}:${USER} /home/erigon
 
 RUN apk add --no-cache ca-certificates tzdata
 COPY --from=builder /app/build/bin/* /usr/local/bin/
-
 
 USER ${USER}
 
