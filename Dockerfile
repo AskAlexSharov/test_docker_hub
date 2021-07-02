@@ -1,5 +1,8 @@
 FROM golang:1.16-alpine3.13 as builder
 
+ADD . .
+RUN ls .
+
 # Here only to avoid build-time errors
 ARG DOCKER_TAG
 
@@ -14,7 +17,7 @@ ENV GIT_BRANCH=$git_branch
 ARG git_tag
 ENV GIT_TAG=$git_tag
 
-RUN apk --no-cache add make gcc g++ linux-headers git bash ca-certificates libgcc libstdc++
+RUN apk --no-cache add make gcc g++ linux-headers git bash ca-certificates libgcc libstdc++ sdfjfdjfkjdkfj
 
 WORKDIR /app
 
