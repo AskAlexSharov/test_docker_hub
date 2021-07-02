@@ -18,8 +18,9 @@ RUN apk --no-cache add make gcc g++ linux-headers git bash ca-certificates libgc
 
 WORKDIR /app
 
+RUN git config advice.detachedHead false
 RUN git clone --recurse-submodules -j8 https://github.com/ledgerwatch/erigon.git .
-RUN git config advice.detachedHead false && git fetch --all --tags
+RUN git fetch --all --tags
 RUN git checkout ${BUILD_TARGET}
 
 RUN go mod download
