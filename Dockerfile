@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine3.14 as builder
+FROM golang:1.16-alpine3.13 as builder
 
 # Here only to avoid build-time errors
 ARG DOCKER_TAG
@@ -28,7 +28,7 @@ RUN go build ./cmd/erigon
 
 RUN make all
 
-FROM alpine:3.14
+FROM alpine:3.13
 
 ARG USER=erigon
 ARG UID=10001
