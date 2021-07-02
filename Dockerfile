@@ -24,6 +24,7 @@ RUN git fetch --all --tags
 RUN git checkout ${BUILD_TARGET}
 
 RUN go mod download
+RUN go build ./cmd/erigon
 
 RUN make all
 
