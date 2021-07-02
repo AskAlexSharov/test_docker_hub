@@ -18,13 +18,11 @@ RUN apk --no-cache add make gcc g++ linux-headers git bash ca-certificates libgc
 
 WORKDIR /app
 
-# next 2 lines helping utilize docker cache
-COPY go.mod go.sum ./
-RUN go mod download
-
 RUN git clone --recurse-submodules -j8 https://github.com/ledgerwatch/erigon.git .
 RUN git config advice.detachedHead false && git fetch --all --tags
 RUN git checkout ${BUILD_TARGET}
+
+RUN go mod download
 
 ADD . .
 RUN make all
